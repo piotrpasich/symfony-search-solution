@@ -43,6 +43,8 @@ The next step is adding
             sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
 
+And defining the router
+
     #app/confing/router.yml
     PPAcmeBundle_post:
         resource: "@PPAcmeBundle/Resources/config/routing/post.yml"
