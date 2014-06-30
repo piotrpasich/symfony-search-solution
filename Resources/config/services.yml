@@ -1,0 +1,22 @@
+#src/PP/AcmeBundle/Resources/config/services.yml
+parameters:
+    pp_acme.post.repository.class: PP\AcmeBundle\Entity\PostRepository
+    pp_acme.post.pagination.listener.class: PP\AcmeBundle\Listener\PaginationListener
+
+services:
+   pp_acme.post.repository:
+        class: %pp_acme.post.repository.class%
+        factory_service:  doctrine.orm.entity_manager
+        factory_method:   getRepository
+        arguments:
+            - "PPAcmeBundle:Post"
+        calls:
+            - [setDispatcher, ["@event_dispatcher"]]
+
+   pp_acme.post.pagination.listener:
+        class: %pp_acme.post.pagination.listener.class%
+        arguments:
+            - @request_stack
+            - @knp_paginator
+        tags:
+            - { name: kernel.event_listener, event: pp.post.preQuery, method: preLoad, priority: -1024 }

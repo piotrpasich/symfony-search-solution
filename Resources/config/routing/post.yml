@@ -1,0 +1,4 @@
+post:
+    pattern:  /
+    defaults: { _controller: "PPAcmeBundle:Post:index" }
+

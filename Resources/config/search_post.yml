@@ -1,0 +1,28 @@
+parameters:
+    pp_acme.post.filter.request.listener.class: PP\AcmeBundle\Listener\Filter\SimpleFieldFilter
+    pp_acme.post.search.like_field.class: PP\AcmeBundle\Listener\Filter\SearchField\LikeSearchField
+    pp_acme.post.search.equal_field.class: PP\AcmeBundle\Listener\Filter\SearchField\EqualSearchField
+
+services:
+   ###SEARCH FIELDS###
+   pp_acme.post.search.field.title:
+        class: %pp_acme.post.search.like_field.class%
+        arguments: ["title"]
+
+   pp_acme.post.search.field.author:
+        class: %pp_acme.post.search.like_field.class%
+        arguments: ["author"]
+
+   pp_acme.post.search.field.content:
+        class: %pp_acme.post.search.like_field.class%
+        arguments: ["content"]
+
+   ###LISTENERS###
+   pp_acme.post.filter.request.listener:
+        class: %pp_acme.post.filter.request.listener.class%
+        arguments:
+            - @pp_acme.post.search.field.title
+            - @pp_acme.post.search.field.author
+            - @pp_acme.post.search.field.content
+        tags:
+            - { name: kernel.event_listener, event: pp.post.preQuery, method: filter, priority: 0 }

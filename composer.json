@@ -1,0 +1,20 @@
+{
+    "name": "pp/symfony-search-solution",
+    "type": "symfony-bundle",
+    "require": {
+        "knplabs/knp-paginator-bundle": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "Piotr Pasich",
+            "email": "piotr.pasich@xsolve.pl"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "PP\\AcmeBundle": ""
+        }
+    },
+    "target-dir": "PP/AcmeBundle",
+    "minimum-stability": "dev"
+}

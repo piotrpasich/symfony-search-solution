@@ -1,0 +1,22 @@
+PP\AcmeBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: PP\AcmeBundle\Entity\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        content:
+            type: text
+        tags:
+            type: array
+        author:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
