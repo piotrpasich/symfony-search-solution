@@ -58,3 +58,12 @@ And initializing bundles in
         new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
     );
 
+# Setting up
+
+This bundle requires a connection with database, so please setup this in your app/config/parameters.yml.
+
+After that you can update a schema by `app/console doctrine:schema:update --force` and generate a few example entities:
+
+    app/console pp/generate -n 1000
+
+This command will download a "n" number of random content from wikipedia and put it into the database.
