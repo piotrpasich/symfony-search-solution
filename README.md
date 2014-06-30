@@ -50,3 +50,11 @@ And defining the router
         resource: "@PPAcmeBundle/Resources/config/routing/post.yml"
         prefix:   /
 
+And initializing bundles in
+
+    //app/AppKernel.php
+    $bundles = array(
+        new PP\AcmeBundle\PPAcmeBundle(),
+        new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+    );
+
