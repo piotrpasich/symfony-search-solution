@@ -9,8 +9,8 @@ class LikeSearchField extends SearchFieldAbstract
 
     public function addConditions(QueryBuilder $queryBuilder, $value)
     {
-        $queryBuilder->andWhere("p.{$this->fieldName} LIKE :{$this->fieldName}")
-                     ->setParameter($this->fieldName, '%' . $value . '%');
+        $queryBuilder->andWhere("{$this->getTableAlias()}.{$this->getFieldName()} LIKE :{$this->getFieldName()}")
+                     ->setParameter($this->getFieldName(), '%' . $value . '%');
 
         return $queryBuilder;
     }

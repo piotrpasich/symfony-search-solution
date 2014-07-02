@@ -9,8 +9,8 @@ class EqualSearchField extends SearchFieldAbstract
 
     public function addConditions(QueryBuilder $queryBuilder, $value)
     {
-        $queryBuilder->andWhere("p.{$this->fieldName} = :{$this->fieldName}")
-                     ->setParameter($this->fieldName, $value);
+        $queryBuilder->andWhere("{$this->getTableAlias()}.{$this->getFieldName()} = :{$this->getFieldName()}")
+                     ->setParameter($this->getFieldName(), $value);
 
         return $queryBuilder;
     }
