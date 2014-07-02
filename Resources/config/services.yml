@@ -1,7 +1,11 @@
-#src/PP/AcmeBundle/Resources/config/services.yml
+imports:
+    - { resource: search_post.yml }
+
 parameters:
     pp_acme.post.repository.class: PP\AcmeBundle\Entity\PostRepository
-    pp_acme.post.pagination.listener.class: PP\AcmeBundle\Listener\PaginationListener
+    pp_acme.post.provider.class: PP\AcmeBundle\Service\PostProvider
+    pp_acme.orm.query_result.pagination.class: PP\AcmeBundle\Orm\PaginationQueryResult
+    pp_acme.orm.query_result.basic.class: PP\AcmeBundle\Orm\BasicQueryResult
 
 services:
    pp_acme.post.repository:
@@ -10,13 +14,19 @@ services:
         factory_method:   getRepository
         arguments:
             - "PPAcmeBundle:Post"
-        calls:
-            - [setDispatcher, ["@event_dispatcher"]]
 
-   pp_acme.post.pagination.listener:
-        class: %pp_acme.post.pagination.listener.class%
+   pp_acme.query_result.pagination:
+        class: %pp_acme.orm.query_result.pagination.class%
         arguments:
             - @request_stack
             - @knp_paginator
-        tags:
-            - { name: kernel.event_listener, event: pp.post.preQuery, method: preLoad, priority: -1024 }
+
+   pp_acme.query_result.basic:
+        class: %pp_acme.orm.query_result.basic.class%
+
+   pp_acme.post.provider:
+        class: %pp_acme.post.provider.class%
+        arguments:
+            - @event_dispatcher
+            - @pp_acme.post.repository
+            - @pp_acme.query_result.pagination

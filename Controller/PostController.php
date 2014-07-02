@@ -17,7 +17,7 @@ class PostController extends Controller
         $form = $this->createForm(new PostSearchType(), $searchPost);
         $form->bind($request);
 
-        $entities = $this->get('pp_acme.post.repository')->findAllBy($searchPost);
+        $entities = $this->get('pp_acme.post.provider')->findAllBy($searchPost);
 
         return $this->render('PPAcmeBundle:Post:index.html.twig', array(
             'entities' => $entities,

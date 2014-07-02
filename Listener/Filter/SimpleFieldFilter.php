@@ -13,23 +13,15 @@ class SimpleFieldFilter implements PostFilterListenerInterface
     /**
      * @var SearchField\SearchFieldInterface[]
      */
-    protected $searchFields;
+    protected $searchFields = array();
 
-    public function __construct()
+    public function addSearchField(SearchFieldInterface $searchField)
     {
-        if (func_get_args() != array_filter(func_get_args(), function($element) { return $element instanceof SearchFieldInterface; } )) {
-            throw new InvalidArgumentException('One of argument passed to SimpleFieldFilter is not instance of SearchFieldInterface');
-        }
-
-        $this->searchFields = func_get_args();
+        $this->searchFields[] = $searchField;
     }
 
     public function filter(PostEvent $postEvent)
     {
-        if ($postEvent->isPropagationStopped()) {
-            return;
-        }
-
         $searchData = $postEvent->getSearchData();
 
         foreach ($this->searchFields as $searchField) {

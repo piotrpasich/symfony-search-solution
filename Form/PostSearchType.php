@@ -33,12 +33,13 @@ class PostSearchType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PP\AcmeBundle\Entity\Post'
+            'data_class'      => 'PP\AcmeBundle\Entity\Post',
+            'csrf_protection' => false,
         ));
     }
 
     public function getName()
     {
-        return 'search';
+        return 'post_search';
     }
 }
