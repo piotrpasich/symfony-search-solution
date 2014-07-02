@@ -7,25 +7,25 @@ services:
    ###SEARCH FIELDS###
    pp_acme.post.search.field.title:
         class: %pp_acme.post.search.like_field.class%
-        arguments: ["title"]
+        arguments: ["title", "p"]
         tags:
             - { name: pp_acme.post.filter.field }
 
    pp_acme.post.search.field.author:
         class: %pp_acme.post.search.like_field.class%
-        arguments: ["author"]
+        arguments: ["author", "p"]
         tags:
             - { name: pp_acme.post.filter.field }
 
    pp_acme.post.search.field.content:
         class: %pp_acme.post.search.like_field.class%
-        arguments: ["content"]
+        arguments: ["content", "p"]
         tags:
             - { name: pp_acme.post.filter.field }
 
    pp_acme.post.search.field.id:
         class: %pp_acme.post.search.equal_field.class%
-        arguments: ["id"]
+        arguments: ["id", "p"]
         tags:
             - { name: pp_acme.post.filter.field }
 

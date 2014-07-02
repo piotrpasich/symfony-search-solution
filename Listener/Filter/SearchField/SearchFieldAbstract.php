@@ -6,9 +6,12 @@ abstract class SearchFieldAbstract implements SearchFieldInterface
 {
     protected $fieldName;
 
-    public function __construct($fieldName)
+    protected $tableAlias;
+
+    public function __construct($fieldName, $tableAlias)
     {
-        $this->fieldName = $fieldName;
+        $this->fieldName  = $fieldName;
+        $this->tableAlias = $tableAlias;
     }
 
     public function getFieldName()
@@ -16,4 +19,8 @@ abstract class SearchFieldAbstract implements SearchFieldInterface
         return $this->fieldName;
     }
 
+    public function getTableAlias()
+    {
+        return $this->tableAlias;
+    }
 }

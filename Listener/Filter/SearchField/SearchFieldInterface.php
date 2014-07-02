@@ -9,6 +9,8 @@ interface SearchFieldInterface
 
     public function getFieldName();
 
+    public function getTableAlias();
+
     public function addConditions(QueryBuilder $queryBuilder, $value);
 
 }
