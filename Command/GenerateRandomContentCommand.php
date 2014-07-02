@@ -39,7 +39,7 @@ class GenerateRandomContentCommand  extends ContainerAwareCommand
             $title   = $crawler->filter('#firstHeading span')->first()->text();
             $content = $crawler->filter('#mw-content-text')->first()->text();
             $author  = $title;
-            $post = new Post($title, $content, array(), $author);
+            $post = Post::create($title, $content, array(), $author);
 
             $em->persist($post);
             $output->writeln($title);

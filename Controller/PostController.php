@@ -22,7 +22,7 @@ class PostController extends Controller
         return $this->render('PPAcmeBundle:Post:index.html.twig', array(
             'entities' => $entities,
             'form'     => $form->createView(),
-        ));
+            ));
     }
 
 }

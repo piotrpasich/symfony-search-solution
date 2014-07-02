@@ -1,4 +1,5 @@
 <?php
+
 namespace PP\AcmeBundle\Orm;
 
 use Doctrine\Orm\QueryBuilder;

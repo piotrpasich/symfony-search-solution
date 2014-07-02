@@ -27,7 +27,7 @@ class Post
     /**
      * @var array
      */
-    private $tags;
+    private $tags = array();
 
     /**
      * @var string
@@ -35,11 +35,15 @@ class Post
     private $author;
 
 
-    public function __construct($title, $content, $tags, $author) {
-        $this->title = $title;
-        $this->content = $content;
-        $this->tags = $tags;
-        $this->author = $author;
+    public static function create($title, $content, $tags, $author)
+    {
+        $post = new static();
+        $post->title = $title;
+        $post->content = $content;
+        $post->tags = $tags;
+        $post->author = $author;
+
+        return $post;
     }
 
     /**
@@ -53,19 +57,6 @@ class Post
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     * @return Post
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
      * Get title
      *
      * @return string 
@@ -73,19 +64,6 @@ class Post
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return Post
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
     }
 
     /**
@@ -99,19 +77,6 @@ class Post
     }
 
     /**
-     * Set tags
-     *
-     * @param array $tags
-     * @return Post
-     */
-    public function setTags($tags)
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
-
-    /**
      * Get tags
      *
      * @return array 
@@ -121,18 +86,11 @@ class Post
         return $this->tags;
     }
 
-    /**
-     * Set author
-     *
-     * @param string $author
-     * @return Post
-     */
-    public function setAuthor($author)
+    public function addTag($tag)
     {
-        $this->author = $author;
-
-        return $this;
+        $this->tags[] = $tag;
     }
+
 
     /**
      * Get author
