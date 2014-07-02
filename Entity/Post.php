@@ -35,37 +35,39 @@ class Post
     public static function create($title, $content, $tags, $author)
     {
         $post = new static();
-        $post->title = $title;
-        $post->content = $content;
-        $post->tags = $tags;
-        $post->author = $author;
+        $post->setTitle($title);
+        $post->setContent($content);
+        $post->setTags($tags);
+        $post->setAuthor($author);
 
         return $post;
     }
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @param string $author
      */
-    public function getId()
+    public function setAuthor($author)
     {
-        return $this->id;
+        $this->author = $author;
     }
 
     /**
-     * Get title
-     *
      * @return string
      */
-    public function getTitle()
+    public function getAuthor()
     {
-        return $this->title;
+        return $this->author;
     }
 
     /**
-     * Get content
-     *
+     * @param string $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+
+    /**
      * @return string
      */
     public function getContent()
@@ -74,8 +76,30 @@ class Post
     }
 
     /**
-     * Get tags
-     *
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param array $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
      * @return array
      */
     public function getTags()
@@ -83,18 +107,21 @@ class Post
         return $this->tags;
     }
 
-    public function addTag($tag)
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
     {
-        $this->tags[] = $tag;
+        $this->title = $title;
     }
 
     /**
-     * Get author
-     *
      * @return string
      */
-    public function getAuthor()
+    public function getTitle()
     {
-        return $this->author;
+        return $this->title;
     }
+
+
 }
