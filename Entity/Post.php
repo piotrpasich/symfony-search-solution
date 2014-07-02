@@ -2,8 +2,6 @@
 
 namespace PP\AcmeBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Post
  */
@@ -27,71 +25,50 @@ class Post
     /**
      * @var array
      */
-    private $tags;
+    private $tags = array();
 
     /**
      * @var string
      */
     private $author;
 
+    public static function create($title, $content, $tags, $author)
+    {
+        $post = new static();
+        $post->setTitle($title);
+        $post->setContent($content);
+        $post->setTags($tags);
+        $post->setAuthor($author);
 
-    public function __construct($title, $content, $tags, $author) {
-        $this->title = $title;
-        $this->content = $content;
-        $this->tags = $tags;
+        return $post;
+    }
+
+    /**
+     * @param string $author
+     */
+    public function setAuthor($author)
+    {
         $this->author = $author;
     }
 
     /**
-     * Get id
-     *
-     * @return integer 
+     * @return string
      */
-    public function getId()
+    public function getAuthor()
     {
-        return $this->id;
+        return $this->author;
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     * @return Post
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set content
-     *
      * @param string $content
-     * @return Post
      */
     public function setContent($content)
     {
         $this->content = $content;
-
-        return $this;
     }
 
     /**
-     * Get content
-     *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -99,22 +76,31 @@ class Post
     }
 
     /**
-     * Set tags
-     *
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @param array $tags
-     * @return Post
      */
     public function setTags($tags)
     {
         $this->tags = $tags;
-
-        return $this;
     }
 
     /**
-     * Get tags
-     *
-     * @return array 
+     * @return array
      */
     public function getTags()
     {
@@ -122,25 +108,20 @@ class Post
     }
 
     /**
-     * Set author
-     *
-     * @param string $author
-     * @return Post
+     * @param string $title
      */
-    public function setAuthor($author)
+    public function setTitle($title)
     {
-        $this->author = $author;
-
-        return $this;
+        $this->title = $title;
     }
 
     /**
-     * Get author
-     *
-     * @return string 
+     * @return string
      */
-    public function getAuthor()
+    public function getTitle()
     {
-        return $this->author;
+        return $this->title;
     }
+
+
 }

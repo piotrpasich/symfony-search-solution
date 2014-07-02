@@ -5,7 +5,6 @@ namespace PP\AcmeBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use PP\AcmeBundle\Entity\Post;
 use Symfony\Component\DomCrawler\Crawler;
@@ -39,7 +38,7 @@ class GenerateRandomContentCommand  extends ContainerAwareCommand
             $title   = $crawler->filter('#firstHeading span')->first()->text();
             $content = $crawler->filter('#mw-content-text')->first()->text();
             $author  = $title;
-            $post = new Post($title, $content, array(), $author);
+            $post = Post::create($title, $content, array(), $author);
 
             $em->persist($post);
             $output->writeln($title);

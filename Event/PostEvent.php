@@ -19,8 +19,6 @@ class PostEvent extends Event
      */
     protected $searchData;
 
-    protected $propagation = true;
-
     public function __construct(QueryBuilder $query, Post $searchData)
     {
         $this->query = $query;
@@ -52,15 +50,5 @@ class PostEvent extends Event
         }
 
         return $this->query;
-    }
-
-    public function stopPropagation()
-    {
-        $this->propagation = false;
-    }
-
-    public function isPropagationStopped()
-    {
-        return ! $this->propagation;
     }
 }

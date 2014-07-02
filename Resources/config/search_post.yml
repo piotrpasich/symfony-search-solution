@@ -8,21 +8,29 @@ services:
    pp_acme.post.search.field.title:
         class: %pp_acme.post.search.like_field.class%
         arguments: ["title"]
+        tags:
+            - { name: pp_acme.post.filter.field }
 
    pp_acme.post.search.field.author:
         class: %pp_acme.post.search.like_field.class%
         arguments: ["author"]
+        tags:
+            - { name: pp_acme.post.filter.field }
 
    pp_acme.post.search.field.content:
         class: %pp_acme.post.search.like_field.class%
         arguments: ["content"]
+        tags:
+            - { name: pp_acme.post.filter.field }
+
+   pp_acme.post.search.field.id:
+        class: %pp_acme.post.search.equal_field.class%
+        arguments: ["id"]
+        tags:
+            - { name: pp_acme.post.filter.field }
 
    ###LISTENERS###
    pp_acme.post.filter.request.listener:
         class: %pp_acme.post.filter.request.listener.class%
-        arguments:
-            - @pp_acme.post.search.field.title
-            - @pp_acme.post.search.field.author
-            - @pp_acme.post.search.field.content
         tags:
             - { name: kernel.event_listener, event: pp.post.preQuery, method: filter, priority: 0 }

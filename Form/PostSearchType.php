@@ -12,33 +12,36 @@ class PostSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('id', null, array(
+                'required' => false
+                ))
             ->add('title', null, array(
-                'required'  =>  false
-            ))
+                'required' => false
+                ))
             ->add('content', 'text', array(
-                'required'  =>  false
-            ))
+                'required' => false
+                ))
             ->add('tags', null, array(
-                'required'  =>  false
-            ))
+                'required' => false
+                ))
             ->add('author', null, array(
-                'required'  =>  false
-            ))
+                'required' => false
+                ))
 
             ->add('submit', 'submit', array('label' => 'Search'))
-            ->setMethod('GET')
-        ;
+            ->setMethod('GET');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PP\AcmeBundle\Entity\Post'
-        ));
+            'data_class' => 'PP\AcmeBundle\Entity\Post',
+            'csrf_protection' => false,
+            ));
     }
 
     public function getName()
     {
-        return 'search';
+        return 'post_search';
     }
 }

@@ -2,9 +2,6 @@
 
 namespace PP\AcmeBundle\Listener\Filter\SearchField;
 
-use Doctrine\ORM\QueryBuilder;
-use PP\AcmeBundle\Listener\Filter\SearchField\SearchFieldInterface;
-
 abstract class SearchFieldAbstract implements SearchFieldInterface
 {
     protected $fieldName;
