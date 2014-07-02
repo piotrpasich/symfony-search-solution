@@ -2,8 +2,6 @@
 
 namespace PP\AcmeBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Post
  */
@@ -34,7 +32,6 @@ class Post
      */
     private $author;
 
-
     public static function create($title, $content, $tags, $author)
     {
         $post = new static();
@@ -49,7 +46,7 @@ class Post
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -59,7 +56,7 @@ class Post
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -69,7 +66,7 @@ class Post
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -79,7 +76,7 @@ class Post
     /**
      * Get tags
      *
-     * @return array 
+     * @return array
      */
     public function getTags()
     {
@@ -91,11 +88,10 @@ class Post
         $this->tags[] = $tag;
     }
 
-
     /**
      * Get author
      *
-     * @return string 
+     * @return string
      */
     public function getAuthor()
     {

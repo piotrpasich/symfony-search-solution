@@ -3,11 +3,8 @@
 namespace PP\AcmeBundle\Orm;
 
 use Knp\Component\Pager\Paginator;
-use PP\AcmeBundle\Event\PostEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Knp\Bundle\PaginatorBundle\Definition\PaginatorAware;
 use Doctrine\Orm\QueryBuilder;
-use PP\AcmeBundle\Orm\QueryResultInterface;
 
 class PaginationQueryResult implements QueryResultInterface
 {

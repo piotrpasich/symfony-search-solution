@@ -4,9 +4,6 @@ namespace PP\AcmeBundle\Listener\Filter;
 
 use PP\AcmeBundle\Event\PostEvent;
 use PP\AcmeBundle\Listener\Filter\SearchField\SearchFieldInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
-use PP\AcmeBundle\Listener\Filter\PostFilterListenerInterface;
-use InvalidArgumentException;
 
 class SimpleFieldFilter implements PostFilterListenerInterface
 {

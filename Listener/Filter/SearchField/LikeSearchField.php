@@ -3,7 +3,6 @@
 namespace PP\AcmeBundle\Listener\Filter\SearchField;
 
 use Doctrine\ORM\QueryBuilder;
-use PP\AcmeBundle\Listener\Filter\SearchField\SearchFieldInterface;
 
 class LikeSearchField extends SearchFieldAbstract
 {
