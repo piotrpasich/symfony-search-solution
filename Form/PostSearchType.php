@@ -12,6 +12,9 @@ class PostSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('id', null, array(
+                'required' => false
+                ))
             ->add('title', null, array(
                 'required' => false
                 ))

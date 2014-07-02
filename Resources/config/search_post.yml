@@ -23,6 +23,12 @@ services:
         tags:
             - { name: pp_acme.post.filter.field }
 
+   pp_acme.post.search.field.id:
+        class: %pp_acme.post.search.equal_field.class%
+        arguments: ["id"]
+        tags:
+            - { name: pp_acme.post.filter.field }
+
    ###LISTENERS###
    pp_acme.post.filter.request.listener:
         class: %pp_acme.post.filter.request.listener.class%
