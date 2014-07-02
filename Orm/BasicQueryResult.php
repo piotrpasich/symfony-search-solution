@@ -1,9 +1,8 @@
 <?php
 
-namespace PP\AcmeBundle\Service;
+namespace PP\AcmeBundle\Orm;
 
 use Doctrine\Orm\QueryBuilder;
-use PP\AcmeBundle\Orm\QueryResultInterface;
 
 class BasicQueryResult implements QueryResultInterface
 {
